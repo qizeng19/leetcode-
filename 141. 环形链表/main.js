@@ -1,30 +1,16 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-
-/**
- * @param {ListNode} head
- * @return {boolean}
- */
-var hasCycle = function (head) {
-  let slow = head,
-    fast = head; // 乌龟和兔子同时从起点出发
-  while (fast && fast.next) {
-    slow = slow.next; // 乌龟走一步
-    fast = fast.next.next; // 兔子走两步
-    if (fast === slow) {
-      // 兔子追上乌龟（套圈），说明有环
-      return true;
+var intersection = function (nums1, nums2) {
+  const st = new Set(nums1);
+  const ans = [];
+  for (const x of nums2) {
+    if (st.delete(x)) {
+      // x 在 st 中
+      ans.push(x);
     }
   }
-  return false; // 访问到了链表末尾，无环
-
-  // 作者：灵茶山艾府
-  // 链接：https://leetcode.cn/problems/linked-list-cycle/solutions/1999269/mei-xiang-ming-bai-yi-ge-shi-pin-jiang-t-c4sw/
-  // 来源：力扣（LeetCode）
-  // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+  return ans;
 };
+
+// 作者：灵茶山艾府
+// 链接：https://leetcode.cn/problems/intersection-of-two-arrays/solutions/3053420/yi-ci-bian-li-pythonjavacgojsrust-by-end-jstx/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
